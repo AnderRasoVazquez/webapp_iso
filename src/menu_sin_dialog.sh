@@ -5,7 +5,7 @@
 
 instalarApache() { # función 1
 # Comunicar si el paquete correspondiente ya está instalado y sino instalarlo.
-    estado=`sudo aptitude show apache2 | grep "Estado:"`
+    estado=`aptitude show apache2 | grep "Estado:"`
     echo $estado | grep "no"
     if [ $? = 0 ]
     then
