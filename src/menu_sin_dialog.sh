@@ -1,6 +1,8 @@
 ##Instalación y Mantenimiento de una Aplicación Web
 #Importar funciones de otros ficheros
 
+. ./funciones/utilidades/colores.sh
+
 instalarApache() { # función 1
 # Comunicar si el paquete correspondiente ya está instalado y sino instalarlo.
     estado=`sudo aptitude show apache2 | grep "Estado:"`
@@ -108,31 +110,38 @@ salir() { # función 13
 
 }
 
+# Muestra una opción formateada con colores
+mostrarOpcion() {
+    printPurple "${1} "
+    # printGreen "${2}\n"
+    printf "${2}\n"
+}
+
 mostrarOpciones() {
     #Mostrar menu
-    echo
-    echo -e "0) Mostar menu"
-    echo -e "0) Mostar menu"
-    echo -e "1) Instalación de Apache"
-    echo -e "2) Configurar el servicio web Apache"
-    echo -e "3) Probar/testear el servicio web Apache"
-    echo -e "4) Instalar el módulo PHP"
-    echo -e "5) Configurar el módulo PHP"
-    echo -e "6) Probar/testear el módulo PHP"
-    echo -e "7) Instalar el módulo Mysql"
-    echo -e "8) Configurar el módulo Mysql"
-    echo -e "9) Probar/testear el módulo Mysql"
-    echo -e "10) Instalar la aplicación"
-    echo -e "11) Hacer un backup de la aplicación"
-    echo -e "12) Restaurar la aplicación"
-    echo -e "13) Salir\n"
+    mostrarOpcion "0)" "Mostar menu"
+    mostrarOpcion "1)" "Instalación de Apache"
+    mostrarOpcion "2)" "Configurar el servicio web Apache"
+    mostrarOpcion "3)" "Probar/testear el servicio web Apache"
+    mostrarOpcion "4)" "Instalar el módulo PHP"
+    mostrarOpcion "5)" "Configurar el módulo PHP"
+    mostrarOpcion "6)" "Probar/testear el módulo PHP"
+    mostrarOpcion "7)" "Instalar el módulo Mysql"
+    mostrarOpcion "8)" "Configurar el módulo Mysql"
+    mostrarOpcion "9)" "Probar/testear el módulo Mysql"
+    mostrarOpcion "10)" "Instalar la aplicación"
+    mostrarOpcion "11)" "Hacer un backup de la aplicación"
+    mostrarOpcion "12)" "Restaurar la aplicación"
+    mostrarOpcion "13)" "Salir"
 }
 
 ### Comienzo del programa ###
 opcionMenuPpal=0
-mostrarOpciones
 while test $opcionMenuPpal -ne 13
 do
+    echo
+    mostrarOpciones
+    echo
     read -p "Introduce una opción: " opcionMenuPpal
     #Realizar acción especifica en base a la elección del usuario
     case $opcionMenuPpal in
