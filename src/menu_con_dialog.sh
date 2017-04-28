@@ -1,7 +1,8 @@
 #Importar funciones de otros ficheros
-. ./funciones/apacheInstalar.sh
-. ./funciones/terminar.sh
+. ./funciones/menu_con_dialog/apacheInstalar.sh
+. ./funciones/menu_con_dialog/terminar.sh
 
+# TODO poner un comando que mire si existe el programa dialog y que si no existe lo instale
 
 #Definición de constantes
 FICH_OPC_MENU="temp/opcion.txt"
