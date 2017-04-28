@@ -113,7 +113,6 @@ salir() { # función 13
 # Muestra una opción formateada con colores
 mostrarOpcion() {
     printPurple "${1} "
-    # printGreen "${2}\n"
     printf "${2}\n"
 }
 
