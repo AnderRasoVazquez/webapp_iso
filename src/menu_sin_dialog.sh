@@ -2,40 +2,10 @@
 #Importar funciones de otros ficheros
 
 . ./funciones/utilidades/colores.sh
+. ./funciones/menu_sin_dialog/apache/instalarApache.sh
+. ./funciones/menu_sin_dialog/apache/configurarApache.sh
+. ./funciones/menu_sin_dialog/apache/probarApache.sh
 
-instalarApache() { # función 1
-# Comunicar si el paquete correspondiente ya está instalado y sino instalarlo.
-    estado=`aptitude show apache2 | grep "Estado:"`
-    echo $estado | grep "no"
-    if [ $? = 0 ]
-    then
-        echo "instalando..."
-        sudo apt-get install apache2
-    else
-        echo -e "Apache ya estaba instalado\n"
-    fi
-}
-#. ./instalarapache.sh
-
-configurarApache() { # función 2
-# 2.1 Asignar vuestro correo electrónico, como correo del adminastrador del
-# servicio web, para que en caso de cualquier incidencia se le escribir un
-# correo a esa dirección.
-# 2.2 Las páginas web estarán en /var/www/. Por defecto, se encuentran en
-# /var/www/html.
-# 2.3 El servidor se encuentra por defecto escuchando las peticiones por el
-# puerto 80, se cambiará para que escuche por el puerto 8080.
-    echo -e "sin implementar\n"
-}
-
-probarApache() { # función 3
-# 3.1 Poner en marcha el servicio web.
-# 3.2 Testear si el servicio apache2 está en marchar con el comando
-# "netstat -l" (buscar el servicio www).
-# 3.3 Visualizar mediante el navegador en la dirección index.html que aparezca
-# el mensaje: “It works”.
-    echo -e "sin implementar\n"
-}
 
 instalarModuloPHP() { # función 4
 # Instalar todos los paquetes php.
