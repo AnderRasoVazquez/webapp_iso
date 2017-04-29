@@ -2,8 +2,25 @@
 . ./funciones/menu_con_dialog/apacheInstalar.sh
 . ./funciones/menu_con_dialog/terminar.sh
 
-# TODO poner un comando que mire si existe el programa dialog y que si no existe lo instale
+instalacionDialog() { # función 1
+# Comunicar si el paquete correspondiente ya está instalado y sino instalarlo.
+    estado=`aptitude show dialog | grep "Estado:"`
+    echo $estado | grep "no"
+    if [ $? = 0 ]
+    then
+        read -p "Es necesario el programa 'dialog' pero no está instalado, ¿quieres instalarlo?(S/n) " respuesta
+            if [ $respuesta != "S" ]
+            then
+                printf "Instalando dialog..."
+                sudo apt-get install dialog
+            else
+                printf "Se necesita el programa dialog para ejecutar este programa."
+                exit 1
+            fi
+    fi
+}
 
+instalacionDialog
 #Definición de constantes
 FICH_OPC_MENU="temp/opcion.txt"
 
@@ -41,5 +58,5 @@ done #Fin del bucle principal
 dialog --backtitle "Proyecto" --title "Aplicación Web" \
 --msgbox "Autores:\n\n\
 MA\nLO\nAV" 10 30 #Dialog para mostrar nuestros nombres
-dialog --msgbox “NOS VAMOS, BUENOS DÍAS!!! \n" 5 30	#Fin del programa
+dialog --msgbox "NOS VAMOS, BUENOS DÍAS!!! \n" 5 30	#Fin del programa
 exit 0 #Fin del programa
