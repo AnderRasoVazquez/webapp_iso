@@ -1,5 +1,7 @@
 #Importar funciones de otros ficheros
 . ./funciones/menu_con_dialog/apache/apacheInstalar.sh
+. ./funciones/menu_con_dialog/apache/configurarApache.sh
+# . ./funciones/menu_con_dialog/apache/probarApache.sh
 . ./funciones/menu_con_dialog/terminar.sh
 
 #Definición de constantes
