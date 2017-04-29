@@ -52,6 +52,7 @@ instalarAplicacion() { # función 10
 backupAplicacion() { # función 11
 # Crear el fichero comprimido web.tar.gz con los ficheros de “/var/www/”
 # y los datos de la base de datos “web”.
+# web.tar.gz. Aviso: para el backup y restauración de la base de datos,
     echo -e "sin implementar\n"
 }
 
@@ -72,7 +73,7 @@ salir() { # función 13
     else
         echo "Programa terminado" #Fin del programa
         echo "Programa por:"
-        echo "Guillermo apellido1 apellido2"
+        echo "Guillermo Enrique Herrera Melara"
         echo "David Pérez Gómez"
         echo "Ander Raso Vázquez"
     fi
