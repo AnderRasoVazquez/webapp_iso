@@ -77,14 +77,43 @@ salir() { # función 13
         echo "David Pérez Gómez"
         echo "Ander Raso Vázquez"
     fi
-
-
 }
 
-# Muestra una opción formateada con colores
-mostrarOpcion() {
-    printPurple "${1} "
-    printf "${2}\n"
+# Programa principal
+main(){
+    mostrarMenu
+    exit 0
+}
+
+# muestra el menu
+mostrarMenu(){
+    opcionMenuPpal=0
+    while test $opcionMenuPpal -ne 13
+    do
+        echo
+        mostrarOpciones
+        echo
+        read -p "Introduce una opción: " opcionMenuPpal
+        #Realizar acción especifica en base a la elección del usuario
+        case $opcionMenuPpal in
+            0) mostrarOpciones;;
+            1) instalarApache;;
+            2) configurarApache;;
+            3) probarApache;;
+            4) instalarModuloPHP;;
+            5) configurarModuloPHP;;
+            6) probarModuloPHP;;
+            7) instalarModuloMysql;;
+            8) configurarModuloMysql;;
+            9) probarModuloMysql;;
+            10) instalarAplicacion;;
+            11) backupAplicacion;;
+            12) restaurarAplicacion;;
+            13) salir;;
+            *) ;;
+
+        esac #Fin selección de acción especifica del usuario
+    done #Fin del bucle ppal
 }
 
 mostrarOpciones() {
@@ -105,32 +134,12 @@ mostrarOpciones() {
     mostrarOpcion "13)" "Salir"
 }
 
-### Comienzo del programa ###
-opcionMenuPpal=0
-while test $opcionMenuPpal -ne 13
-do
-    echo
-    mostrarOpciones
-    echo
-    read -p "Introduce una opción: " opcionMenuPpal
-    #Realizar acción especifica en base a la elección del usuario
-    case $opcionMenuPpal in
-        0) mostrarOpciones;;
-        1) instalarApache;;
-        2) configurarApache;;
-        3) probarApache;;
-        4) instalarModuloPHP;;
-        5) configurarModuloPHP;;
-        6) probarModuloPHP;;
-        7) instalarModuloMysql;;
-        8) configurarModuloMysql;;
-        9) probarModuloMysql;;
-        10) instalarAplicacion;;
-        11) backupAplicacion;;
-        12) restaurarAplicacion;;
-        13) salir;;
-        *) ;;
+# Muestra una opción formateada con colores
+mostrarOpcion() {
+    printPurple "${1} "
+    printf "${2}\n"
+}
 
-    esac #Fin selección de acción especifica del usuario
-done #Fin del bucle ppal
-exit 0 #Fin del programa
+# ejecutar programa principal
+main
+
