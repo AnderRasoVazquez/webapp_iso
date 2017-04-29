@@ -54,3 +54,24 @@ printCyan() {
 printWhite() {
     printf "${WHITE}${1}${NC}"
 }
+
+########################################
+# Funciones para dar estilo a los output
+# ejemplo de uso:
+# printExito "Texto a imprimir\n"
+########################################
+
+# color de output
+printExito() {
+    printGreen "${1}"
+}
+
+# color de output
+printError() {
+    printRed "${1}"
+}
+
+# color de output
+printWarning() {
+    printYellow "${1}"
+}
