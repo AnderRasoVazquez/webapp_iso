@@ -1,6 +1,6 @@
 #Importar funciones de otros ficheros
 . ./funciones/menu_con_dialog/apache/apacheInstalar.sh
-. ./funciones/menu_con_dialog/apache/terminar.sh
+. ./funciones/menu_con_dialog/terminar.sh
 
 instalacionDialog() { # función 1
 # Comunicar si el paquete correspondiente ya está instalado y sino instalarlo.
