@@ -2,6 +2,19 @@
 . ./funciones/menu_con_dialog/apache/apacheInstalar.sh
 . ./funciones/menu_con_dialog/terminar.sh
 
+#Definición de constantes
+FICH_OPC_MENU="temp/opcion.txt"
+
+# funcion principal
+main() {
+    instalacionDialog
+    mostrarMenu
+    mostrarAutores
+    exit 0
+}
+
+# comprueba si está instalado el programa dialog
+# si no lo está, pregunta si se desea instalar
 instalacionDialog() { # función 1
 # Comunicar si el paquete correspondiente ya está instalado y sino instalarlo.
     estado=`aptitude show dialog | grep "Estado:"`
@@ -20,43 +33,69 @@ instalacionDialog() { # función 1
     fi
 }
 
-instalacionDialog
-#Definición de constantes
-FICH_OPC_MENU="temp/opcion.txt"
+# muestra el menu principal
+mostrarMenu() {
+    opcionMenuPpal=0
 
-### Comienzo del programa ###
-opcionMenuPpal=0
+    while test $opcionMenuPpal -ne 13
+    do
+        #Mostrar Menú
+        dialog --backtitle "Proyecto SO" --title "Aplicación Web" \
+                --menu "\nElige una opción:" 20 70 13 \
+                1 "Instalación de Apache"\
+                2 "Configurar el servicio web Apache"\
+                3 "Probar/testear el servicio web Apache"\
+                4 "Instalar el módulo PHP"\
+                5 "Configurar el módulo PHP"\
+                6 "Probar/testear el módulo PHP"\
+                7 "Instalar el módulo Mysql"\
+                8 "Configurar el módulo Mysql"\
+                9 "Probar/testear el módulo Mysql"\
+                10 "Instalar la aplicación"\
+                11 "Hacer un backup de la aplicación"\
+                12 "Restaurar la aplicación"\
+                13 "Salir"\
+                2> $FICH_OPC_MENU
 
-while test $opcionMenuPpal -ne 2
-do
-	#Mostrar Menú
-	dialog --backtitle "Proyecto SO" --title "Aplición Web" \
-			--menu "\nElige una opción:" 20 70 20 \
-			1 "Instalar un servidor web apache"\
-			2 "Salir"\
-			2> $FICH_OPC_MENU
+        if test $? -eq 0
+        then
+            #Obtener la opción del menú seleccionada por el usuario
+            opcionMenuPpal=`more $FICH_OPC_MENU`
 
-	if test $? -eq 0
-	then
-		#Obtener la opción del menú seleccionada por el usuario
-		opcionMenuPpal=`more $FICH_OPC_MENU`
+            #Borrar el fichero temporal que contiene la respuesta del usuario
+            rm $FICH_OPC_MENU
 
-		#Borrar el fichero temporal que contiene la respuesta del usuario
-		rm $FICH_OPC_MENU
+            #Seleccionar la acción que quiere realizar el usuario
+            case $opcionMenuPpal in
+                1) apacheInstalar;;
+                2) configurarApache;;
+                3) probarApache;;
+                4) instalarModuloPHP;;
+                5) configurarModuloPHP;;
+                6) probarModuloPHP;;
+                7) instalarModuloMysql;;
+                8) configurarModuloMysql;;
+                9) probarModuloMysql;;
+                10) instalarAplicacion;;
+                11) backupAplicacion;;
+                12) restaurarAplicacion;;
+                13) terminar;;
+                *) ;;
+            esac #Fin de la selección del usuario
+        else
+            opcionMenuPpal=2
+        fi
 
-		#Seleccionar la acción que quiere realizar el usuario
-		case $opcionMenuPpal in
-			1)apacheInstalar;;
-			2)terminar;;
-			*) ;;
-		esac #Fin de la selección del usuario
-	else
-		opcionMenuPpal=2
-	fi
+    done #Fin del bucle principal
+}
 
-done #Fin del bucle principal
-dialog --backtitle "Proyecto" --title "Aplicación Web" \
---msgbox "Autores:\n\n\
-MA\nLO\nAV" 10 30 #Dialog para mostrar nuestros nombres
-dialog --msgbox "NOS VAMOS, BUENOS DÍAS!!! \n" 5 30	#Fin del programa
-exit 0 #Fin del programa
+# muestra los autores del proyecto
+mostrarAutores() {
+    dialog --backtitle "Proyecto" --title "Aplicación Web" \
+    --msgbox "Autores:\n\nGuillermo Enrique Herrera Melara\nDavid Pérez Gómez\nAnder Raso Vázquez" 10 50
+}
+
+
+# Ejecutar el programa principal
+main
+
