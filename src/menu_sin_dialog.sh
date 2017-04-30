@@ -83,7 +83,6 @@ mostrarMenu() {
         read -p "Introduce una opción: " opcionMenuPpal
         #Realizar acción especifica en base a la elección del usuario
         case $opcionMenuPpal in
-            0) mostrarOpciones;;
             1) instalarApache;;
             2) configurarApache;;
             3) probarApache;;
@@ -105,7 +104,6 @@ mostrarMenu() {
 
 mostrarOpciones() {
     #Mostrar menu
-    mostrarOpcion "0)" "Mostar menu"
     mostrarOpcion "1)" "Instalación de Apache"
     mostrarOpcion "2)" "Configurar el servicio web Apache"
     mostrarOpcion "3)" "Probar/testear el servicio web Apache"
