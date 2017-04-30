@@ -1,14 +1,21 @@
 #!/bin/bash
 # Este script sirve para devolver al estado original a apache
 
+CONF_SITE='/etc/apache2/sites-available/000-default.conf'
+CARPETA_RAIZ='\/var\/www\/html'
+PORTS_FILE='/etc/apache2/ports.conf'
+PORT=80
+EMAIL='webmaster@localhost'
+
 main() {
-    restaurarCopias
+    restaurarConfiguracion
     reiniciarApache
 }
 
-restaurarCopias(){
-    sudo cp /etc/apache2/ports.conf.backup /etc/apache2/ports.conf
-    sudo cp /etc/apache2/sites-available/000-default.conf.backup /etc/apache2/sites-available/000-default.conf
+restaurarConfiguracion(){
+    sudo sed -i "s/^Listen [0-9]*/Listen ${PORT}/" $PORTS_FILE
+    sudo sed -i "s/ServerAdmin .*/ServerAdmin ${EMAIL}/" $CONF_SITE
+    sudo sed -i "s/DocumentRoot .*/DocumentRoot ${CARPETA_RAIZ}/" $CONF_SITE
 }
 
 reiniciarApache(){
