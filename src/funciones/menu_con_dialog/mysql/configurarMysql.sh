@@ -10,6 +10,7 @@ configurarMysql() { # función 8
 # Al usuario administrador de Mysql (“root”) asignarle la contraseña “euiti”.
     dialog --inputbox "Introduce la contraseña actual de MySQL:" 8 40 2> $SALIDA
     pass=`less $SALIDA`
+    rm $SALIDA
     # Se intenta entrar a mysql con la contraseña dada y cambiarla a la nueva.
     # El output se redirige a $SALIDA para poder comprobar si se ha entrado
     # correctamente.
@@ -22,5 +23,4 @@ configurarMysql() { # función 8
         dialog --backtitle "Proyecto" --title "Configurar Apache" \
         --msgbox "La contraseña se ha cambiado.\n" 5 70
     fi
-    rm $SALIDA
 }
