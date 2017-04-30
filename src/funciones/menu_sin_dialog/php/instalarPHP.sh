@@ -4,10 +4,10 @@ function instalarPHP() #funcion4
 	echo $estado | grep "no"
 	if test $? = 0
 	then 
-	    echo "Installando PHP...\n"
+	    echo "Installando PHP..."
 	    sudo apt install php libapache2-mod-php
 	else
-	  echo "PHP ya estaba instalado\n"
+	  echo "PHP ya estaba instalado"
 	fi 
 }
 #. ./instalarPHP_sin_dialogo.sh
