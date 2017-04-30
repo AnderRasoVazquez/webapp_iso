@@ -1,6 +1,5 @@
 # variables globales
 PASSWORD='euiti'
-MYSQL='mysql.service'
 SALIDA='/tmp/salida.txt'
 
 configurarMysql() { # función 8
