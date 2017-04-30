@@ -13,7 +13,7 @@ probarMysql() { # función 9
         then
             # se intenta iniciar MySQL
             printf "iniciando $MYSQL...\n"
-            sudo systemctl start mysql.service
+            sudo systemctl start $MYSQL
             probarMysql
         fi
     fi
