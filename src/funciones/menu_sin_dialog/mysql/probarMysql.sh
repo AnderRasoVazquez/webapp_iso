@@ -1,25 +1,20 @@
+# variables globales
+MYSQL='mysql.service'
+
 probarMysql() { # función 9
 # Testear el servicio mysql "netstat -l" y ponerlo en marcha en caso de estar
 # detenido.
-    while [ 0 ]
-    do
-        sudo netstat -tap | grep mysql
-        if [ $? != 0 ]
-        then # MySQL-server no activo
-            read -p "MySQL-server no esta activo. ¿Poner en marcha? (S/n) " respuesta
-            if [ $respuesta = "S" ]
-            then # respuesta = S
-                # se intenta reiniciar MySQL-server y se vuelve al principio
-                # del ciclo
-                sudo systemctl restart mysql.service
-            else # respuesta = n (!= S)
-                # se ha decidido no hacer nada
-                echo
-                break # fin del metodo
+    if [ "`systemctl is-active $MYSQL`" = "active" ]
+    then
+        printf "$MYSQL está activo\n"
+    else # MySQL-server no activo
+        read -p "$MYSQL no esta activo. ¿Poner en marcha? (S/n) " respuesta
+        if [ $respuesta = "S" ]
+        then
+            # se intenta iniciar MySQL
+            printf "iniciando $MYSQL...\n"
+            sudo systemctl start mysql.service
+            printf "hecho\n"
         fi
-        else # MySQL-server activo
-            echo -e "MySQL-server está activo\n"
-            break # fin del metodo
     fi
-    done
 }

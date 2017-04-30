@@ -28,11 +28,6 @@ probarModuloPHP() { # función 6
     echo -e "sin implementar\n"
 }
 
-configurarModuloMysql() { # función 8
-# Al usuario administrador de Mysql (“root”) asignarle la contraseña “euiti”.
-    echo -e "sin implementar\n"
-}
-
 instalarAplicacion() { # función 10
 # Ejecutar el fichero “web.sql” para crear las tablas y la base datos.
 # Copiar el fichero “consultaprofesores.php” en /var/www/, asignar permisos
@@ -72,13 +67,13 @@ salir() { # función 13
 }
 
 # Programa principal
-main(){
+main() {
     mostrarMenu
     exit 0
 }
 
 # muestra el menu
-mostrarMenu(){
+mostrarMenu() {
     opcionMenuPpal=0
     while test $opcionMenuPpal -ne 13
     do
