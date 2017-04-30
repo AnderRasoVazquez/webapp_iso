@@ -33,7 +33,7 @@ crearCopiaConfiguracionApache() {
 cambiarPuerto() {
     dialog --backtitle "Proyecto" --title "Configurar Apache" \
     --msgbox "Cambiando el puerto 80 por ${PORT}...\n" 5 70
-    sudo sed -i "s/Listen 80/Listen ${PORT}/" $PORTS_FILE
+    sudo sed -i "s/^Listen [0-9]*/Listen ${PORT}/" $PORTS_FILE
 }
 
 # cambia el email por defecto
@@ -41,14 +41,14 @@ cambiarEmailAdmin() {
     dialog --inputbox "Introduce el email del adiministrador:" 8 40 2> $FICH_MAIL
     email=`more $FICH_MAIL`
     rm $FICH_MAIL
-    sudo sed -i "s/webmaster@localhost/${email}/" $CONF_SITE
+    sudo sed -i "s/ServerAdmin .*/ServerAdmin ${email}/" $CONF_SITE
 }
 
 # cambia la carpeta de recursos web por defecto
 cambiarCarpetaWebs() {
     dialog --backtitle "Proyecto" --title "Configurar Apache" \
     --msgbox "Cambiando '/var/www/html' por '/var/www'...\n" 5 70
-    sudo sed -i "s/\/var\/www\/html/${CARPETA_RAIZ}/" $CONF_SITE
+    sudo sed -i "s/DocumentRoot .*/DocumentRoot ${CARPETA_RAIZ}/" $CONF_SITE
 }
 
 # reinicia apache

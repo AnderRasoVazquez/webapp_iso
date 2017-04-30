@@ -29,19 +29,19 @@ crearCopiaConfiguracionApache() {
 # cambia el puerto por defecto
 cambiarPuerto() {
     printf "Cambiando el puerto 80 por ${PORT}...\n"
-    sudo sed -i "s/Listen 80/Listen ${PORT}/" $PORTS_FILE
+    sudo sed -i "s/^Listen [0-9]*/Listen ${PORT}/" $PORTS_FILE
 }
 
 # cambia el email por defecto
 cambiarEmailAdmin() {
     read -p "Introduce el email del administrador: " email
-    sudo sed -i "s/webmaster@localhost/${email}/" $CONF_SITE
+    sudo sed -i "s/ServerAdmin .*/ServerAdmin ${email}/" $CONF_SITE
 }
 
 # cambia la carpeta de recursos web por defecto
 cambiarCarpetaWebs() {
     printf "Cambiando '/var/www/html' por '/var/www'...\n"
-    sudo sed -i "s/\/var\/www\/html/${CARPETA_RAIZ}/" $CONF_SITE
+    sudo sed -i "s/DocumentRoot .*/DocumentRoot ${CARPETA_RAIZ}/" $CONF_SITE
 }
 
 # reinicia apache
