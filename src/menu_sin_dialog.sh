@@ -5,6 +5,9 @@
 . ./funciones/menu_sin_dialog/apache/instalarApache.sh
 . ./funciones/menu_sin_dialog/apache/configurarApache.sh
 . ./funciones/menu_sin_dialog/apache/probarApache.sh
+. ./funciones/menu_sin_dialog/mysql/instalarMysql.sh
+. ./funciones/menu_sin_dialog/mysql/configurarMysql.sh
+. ./funciones/menu_sin_dialog/mysql/probarMysql.sh
 
 
 instalarModuloPHP() { # función 4
@@ -22,22 +25,6 @@ probarModuloPHP() { # función 6
 # ( <?php phpinfo(); ?>)
 # 6.2 Abrir test.php con un navegador web. ¿Qué permisos son necesarios para
 # que podamos verlo todo el mundo?
-    echo -e "sin implementar\n"
-}
-
-instalarModuloMysql() { # función 7
-# Instalar el paquete Mysql de servidor y cliente.
-    echo -e "sin implementar\n"
-}
-
-configurarModuloMysql() { # función 8
-# Al usuario administrador de Mysql (“root”) asignarle la contraseña “euiti”.
-    echo -e "sin implementar\n"
-}
-
-probarModuloMysql() { # función 9
-# Testear el servicio mysql "netstat -l" y ponerlo en marcha en caso de estar
-# detenido.
     echo -e "sin implementar\n"
 }
 
@@ -80,13 +67,13 @@ salir() { # función 13
 }
 
 # Programa principal
-main(){
+main() {
     mostrarMenu
     exit 0
 }
 
 # muestra el menu
-mostrarMenu(){
+mostrarMenu() {
     opcionMenuPpal=0
     while test $opcionMenuPpal -ne 13
     do
@@ -103,9 +90,9 @@ mostrarMenu(){
             4) instalarModuloPHP;;
             5) configurarModuloPHP;;
             6) probarModuloPHP;;
-            7) instalarModuloMysql;;
-            8) configurarModuloMysql;;
-            9) probarModuloMysql;;
+            7) instalarMysql;;
+            8) configurarMysql;;
+            9) probarMysql;;
             10) instalarAplicacion;;
             11) backupAplicacion;;
             12) restaurarAplicacion;;
@@ -142,4 +129,3 @@ mostrarOpcion() {
 
 # ejecutar programa principal
 main
-

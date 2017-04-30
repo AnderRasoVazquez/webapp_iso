@@ -2,6 +2,9 @@
 . ./funciones/menu_con_dialog/apache/apacheInstalar.sh
 . ./funciones/menu_con_dialog/apache/configurarApache.sh
 . ./funciones/menu_con_dialog/apache/probarApache.sh
+. ./funciones/menu_con_dialog/mysql/instalarMysql.sh
+. ./funciones/menu_con_dialog/mysql/configurarMysql.sh
+. ./funciones/menu_con_dialog/mysql/probarMysql.sh
 . ./funciones/menu_con_dialog/terminar.sh
 
 #Definición de constantes
@@ -42,7 +45,7 @@ mostrarMenu() {
     while test $opcionMenuPpal -ne 13
     do
         #Mostrar Menú
-        dialog --backtitle "Proyecto SO" --title "Aplicación Web" \
+        dialog --backtitle "Proyecto ISO" --title "Aplicación Web" \
                 --menu "\nElige una opción:" 20 70 13 \
                 1 "Instalación de Apache"\
                 2 "Configurar el servicio web Apache"\
@@ -75,9 +78,9 @@ mostrarMenu() {
                 4) instalarModuloPHP;;
                 5) configurarModuloPHP;;
                 6) probarModuloPHP;;
-                7) instalarModuloMysql;;
-                8) configurarModuloMysql;;
-                9) probarModuloMysql;;
+                7) instalarMysql;;
+                8) configurarMysql;;
+                9) probarMysql;;
                 10) instalarAplicacion;;
                 11) backupAplicacion;;
                 12) restaurarAplicacion;;
@@ -100,4 +103,3 @@ mostrarAutores() {
 
 # Ejecutar el programa principal
 main
-
