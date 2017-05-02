@@ -1,5 +1,5 @@
 #variables globales
-CARPETA='/var/www/html'
+CARPETA='/var/www/'
 FICHERO_PHP='test.php'
 PHP_PAGE='http://localhost:8080/test.php'
 
