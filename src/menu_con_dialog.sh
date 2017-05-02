@@ -5,6 +5,9 @@
 . ./funciones/menu_con_dialog/mysql/instalarMysql.sh
 . ./funciones/menu_con_dialog/mysql/configurarMysql.sh
 . ./funciones/menu_con_dialog/mysql/probarMysql.sh
+. ./funciones/menu_con_dialog/php/instalarPHP.sh
+. ./funciones/menu_con_dialog/php/configurarPHP.sh
+. ./funciones/menu_con_dialog/php/probarPHP.sh
 . ./funciones/menu_con_dialog/terminar.sh
 
 #Definición de constantes
@@ -75,9 +78,9 @@ mostrarMenu() {
                 1) apacheInstalar;;
                 2) configurarApache;;
                 3) probarApache;;
-                4) instalarModuloPHP;;
-                5) configurarModuloPHP;;
-                6) probarModuloPHP;;
+                4) instalarPHP;;
+                5) configurarPHP;;
+                6) probarPHP;;
                 7) instalarMysql;;
                 8) configurarMysql;;
                 9) probarMysql;;
