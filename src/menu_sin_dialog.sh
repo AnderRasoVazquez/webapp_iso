@@ -8,25 +8,9 @@
 . ./funciones/menu_sin_dialog/mysql/instalarMysql.sh
 . ./funciones/menu_sin_dialog/mysql/configurarMysql.sh
 . ./funciones/menu_sin_dialog/mysql/probarMysql.sh
-
-
-instalarModuloPHP() { # función 4
-# Instalar todos los paquetes php.
-    echo -e "sin implementar\n"
-}
-
-configurarModuloPHP() { # función 5
-# Instalar el paquete de PHPX que permite trabajar con MySQL.
-    echo -e "sin implementar\n"
-}
-
-probarModuloPHP() { # función 6
-# 6.1 Crear el fichero “test.php” en /var/www/ con el siguiente código:
-# ( <?php phpinfo(); ?>)
-# 6.2 Abrir test.php con un navegador web. ¿Qué permisos son necesarios para
-# que podamos verlo todo el mundo?
-    echo -e "sin implementar\n"
-}
+. ./funciones/menu_sin_dialog/php/instalarPHP.sh
+. ./funciones/menu_sin_dialog/php/configurarPHP.sh
+. ./funciones/menu_sin_dialog/php/probarPHP.sh
 
 instalarAplicacion() { # función 10
 # Ejecutar el fichero “web.sql” para crear las tablas y la base datos.
@@ -86,9 +70,9 @@ mostrarMenu() {
             1) instalarApache;;
             2) configurarApache;;
             3) probarApache;;
-            4) instalarModuloPHP;;
-            5) configurarModuloPHP;;
-            6) probarModuloPHP;;
+            4) instalarPHP;;
+            5) configurarPHP;;
+            6) probarPHP;;
             7) instalarMysql;;
             8) configurarMysql;;
             9) probarMysql;;
