@@ -1,4 +1,4 @@
-Drop database web;
+Drop database if exists web;
 CREATE DATABASE web
 CHARACTER SET utf8
 DEFAULT CHARACTER SET utf8
