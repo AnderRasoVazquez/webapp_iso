@@ -1,4 +1,4 @@
-function configurarPHP(){ #funcion5
+configurarPHP(){ #funcion5
 #Configura PHP para poder ocuparlo con MySQL
 	estado=`sudo aptitude show php-mysql | grep "Estado:"`
 	echo $estado | grep "no"
