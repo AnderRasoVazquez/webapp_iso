@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ##Instalación y Mantenimiento de una Aplicación Web
 #Importar funciones de otros ficheros
 
@@ -11,14 +13,8 @@
 . ./funciones/menu_sin_dialog/php/instalarPHP.sh
 . ./funciones/menu_sin_dialog/php/configurarPHP.sh
 . ./funciones/menu_sin_dialog/php/probarPHP.sh
+. ./funciones/menu_sin_dialog/app/instalarApp.sh
 
-instalarAplicacion() { # función 10
-# Ejecutar el fichero “web.sql” para crear las tablas y la base datos.
-# Copiar el fichero “consultaprofesores.php” en /var/www/, asignar permisos
-# y comprobar que aparece la información de los profesores en la dirección
-# consultaprofesores.php.
-    echo -e "sin implementar\n"
-}
 
 backupAplicacion() { # función 11
 # Crear el fichero comprimido web.tar.gz con los ficheros de “/var/www/”
@@ -76,7 +72,7 @@ mostrarMenu() {
             7) instalarMysql;;
             8) configurarMysql;;
             9) probarMysql;;
-            10) instalarAplicacion;;
+            10) instalarApp;;
             11) backupAplicacion;;
             12) restaurarAplicacion;;
             13) salir;;
