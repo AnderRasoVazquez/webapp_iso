@@ -7,7 +7,7 @@ CARPETA='/var/www/'
 DIRECCION='http://localhost:8080/consultarprofesores.php'
 SALIDA='/tmp/salida.txt'
 
-function instalarApp(){ #funcion 10
+instalarApp(){ #funcion 10
 
 	echo 'Instalando aplicacion...'
 	mysql -u $USER -p$PASSWORD < web.sql &> $SALIDA
@@ -17,7 +17,7 @@ function instalarApp(){ #funcion 10
 		if test $? = 0 
 		then
 			echo 'Mostrando profesores...'
-			sensible-browser $DIRECCION
+            sensible-browser $DIRECCION > /dev/null 2>&1
 		else
 			echo 'ERROR: No se puede mostrar profesores'
 		fi
