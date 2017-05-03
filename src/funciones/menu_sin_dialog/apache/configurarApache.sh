@@ -30,6 +30,8 @@ crearCopiaConfiguracionApache() {
 cambiarPuerto() {
     printf "Cambiando el puerto 80 por ${PORT}...\n"
     sudo sed -i "s/^Listen [0-9]*/Listen ${PORT}/" $PORTS_FILE
+    sudo sed -i "s/<VirtualHost \*:[0-9]*>/<VirtualHost *:${PORT}>/" $CONF_SITE
+
 }
 
 # cambia el email por defecto

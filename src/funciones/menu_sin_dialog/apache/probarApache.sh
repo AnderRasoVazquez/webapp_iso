@@ -22,6 +22,7 @@ estaApacheEnMarcha() {
 	if test "`systemctl is-active ${APACHE}`" = "active"
 	then 
 		printExito "${APACHE} está activo, abriendo navegador...\n"
+        copiarPaginaDePrueba
 		visualizarPagina $DEFAULT_PAGE
 	else
 		printWarning "${APACHE} no está activo.\n"
@@ -33,4 +34,8 @@ visualizarPagina(){
 	sensible-browser $1 > /dev/null 2>&1
 	# Redirijo el output porque no quiero que salga info del navegador
 	# al abrirlo en la terminal, así se verá más limpio.
+}
+
+copiarPaginaDePrueba() {
+    sudo cp /var/www/html/index.html /var/www/index.html
 }
