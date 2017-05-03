@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Importar funciones de otros ficheros
 . ./funciones/menu_con_dialog/apache/apacheInstalar.sh
 . ./funciones/menu_con_dialog/apache/configurarApache.sh
