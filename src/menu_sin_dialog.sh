@@ -15,21 +15,8 @@
 . ./funciones/menu_sin_dialog/php/probarPHP.sh
 . ./funciones/menu_sin_dialog/app/instalarApp.sh
 . ./funciones/menu_sin_dialog/app/backupApp.sh
+. ./funciones/menu_sin_dialog/app/restaurarApp.sh
 
-
-backupAplicacion() { # función 11
-# Crear el fichero comprimido web.tar.gz con los ficheros de “/var/www/”
-# y los datos de la base de datos “web”.
-# web.tar.gz. Aviso: para el backup y restauración de la base de datos,
-    echo -e "sin implementar\n"
-}
-
-restaurarAplicacion() { #función 12
-# Restaurar la base de datos y los ficheros de “/var/www/” desde el fichero
-# web.tar.gz. Aviso: para el backup y restauración de la base de datos,
-# utilizar mysqldump.
-    echo -e "sin implementar\n"
-}
 
 salir() { # función 13
 # Aperece un mensaje de despedida y los nombres de los miembros del grupo.
