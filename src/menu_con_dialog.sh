@@ -10,6 +10,8 @@
 . ./funciones/menu_con_dialog/php/instalarPHP.sh
 . ./funciones/menu_con_dialog/php/configurarPHP.sh
 . ./funciones/menu_con_dialog/php/probarPHP.sh
+. ./funciones/menu_con_dialog/app/instalarApp.sh
+. ./funciones/menu_con_dialog/app/backupApp.sh
 . ./funciones/menu_con_dialog/terminar.sh
 
 #Definición de constantes
@@ -73,7 +75,7 @@ mostrarMenu() {
             opcionMenuPpal=`more $FICH_OPC_MENU`
 
             #Borrar el fichero temporal que contiene la respuesta del usuario
-            rm $FICH_OPC_MENU
+            # rm $FICH_OPC_MENU
 
             #Seleccionar la acción que quiere realizar el usuario
             case $opcionMenuPpal in
@@ -86,8 +88,8 @@ mostrarMenu() {
                 7) instalarMysql;;
                 8) configurarMysql;;
                 9) probarMysql;;
-                10) instalarAplicacion;;
-                11) backupAplicacion;;
+                10) instalarApp;;
+                11) backupApp;;
                 12) restaurarAplicacion;;
                 13) terminar;;
                 *) ;;
