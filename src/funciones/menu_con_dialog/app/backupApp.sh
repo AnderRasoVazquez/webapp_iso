@@ -6,14 +6,13 @@ backupApp() {
     CARPETA_BACKUP="/var/www"
     NOMBRE_BACKUP="web.tar.gz"
     ORIGEN="/var/www/"
-    WEB_SQL="/web_backup.sql"
+    WEB_SQL="web_backup.sql"
     SALIDA='salida.txt'
 
     path=$PWD
     dialog --backtitle "Proyecto" --title "Copia de Seguridad Aplicacion" \
     --insecure --passwordbox "Introduce la contraseña de mysql" 8 40 2> $SALIDA
     pass=`less $SALIDA`
-    echo $pass
     rm $SALIDA
     mysqldump -u root -p$pass web > "$TEMP_LOCAL/$WEB_SQL" 2> /dev/null
     if [ $? == 0 ]

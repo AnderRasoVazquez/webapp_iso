@@ -12,6 +12,7 @@
 . ./funciones/menu_con_dialog/php/probarPHP.sh
 . ./funciones/menu_con_dialog/app/instalarApp.sh
 . ./funciones/menu_con_dialog/app/backupApp.sh
+. ./funciones/menu_con_dialog/app/restaurarApp.sh
 . ./funciones/menu_con_dialog/terminar.sh
 
 #Definición de constantes
