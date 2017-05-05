@@ -5,6 +5,7 @@
 <body>
 <?php 
 $cxn = new mysqli("localhost","root","euiti","web");
+$cxn->query("SET NAMES 'utf8'");
 $res = $cxn->query("select nombre,apellidos from profesores");
 $c=1;
 while ($row = $res->fetch_array(MYSQLI_ASSOC))
