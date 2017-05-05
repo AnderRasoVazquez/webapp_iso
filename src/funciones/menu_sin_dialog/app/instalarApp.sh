@@ -1,5 +1,5 @@
+#!/bin/bash
 #VARIABLES GLOBALES
-
 USER='root'
 PASSWORD='euiti'
 PROFESORES='consultarprofesores.php'
@@ -14,7 +14,7 @@ instalarApp(){ #funcion 10
 	if test $? = 0
 	then
 		sudo cp $PROFESORES $CARPETA
-		if test $? = 0 
+		if test $? = 0
 		then
 			echo 'Mostrando profesores...'
             sensible-browser $DIRECCION > /dev/null 2>&1

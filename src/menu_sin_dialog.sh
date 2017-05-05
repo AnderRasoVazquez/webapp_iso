@@ -14,6 +14,7 @@
 . ./funciones/menu_sin_dialog/php/configurarPHP.sh
 . ./funciones/menu_sin_dialog/php/probarPHP.sh
 . ./funciones/menu_sin_dialog/app/instalarApp.sh
+. ./funciones/menu_sin_dialog/app/backupApp.sh
 
 
 backupAplicacion() { # función 11
@@ -73,7 +74,7 @@ mostrarMenu() {
             8) configurarMysql;;
             9) probarMysql;;
             10) instalarApp;;
-            11) backupAplicacion;;
+            11) backupApp;;
             12) restaurarAplicacion;;
             13) salir;;
             *) ;;
