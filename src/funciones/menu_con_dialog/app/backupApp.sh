@@ -1,7 +1,10 @@
 #!/bin/bash
-#VARIABLES GLOBALES
 
 backupApp() {
+    # Crear el fichero comprimido web.tar.gz con los ficheros de “/var/www/”
+    # y los datos de la base de datos “web”.
+
+    # Variables
     TEMP_LOCAL="temp"
     CARPETA_BACKUP="/var/www"
     NOMBRE_BACKUP="web.tar.gz"
@@ -19,7 +22,7 @@ backupApp() {
     then
         sudo mv "$TEMP_LOCAL/$WEB_SQL" $ORIGEN
         cd $ORIGEN
-        sudo tar --exclude="html" -zcf "$CARPETA_BACKUP/$NOMBRE_BACKUP" *
+        sudo tar --exclude={"html",$NOMBRE_BACKUP} -zcf "$CARPETA_BACKUP/$NOMBRE_BACKUP" *
         sudo rm $WEB_SQL
         dialog --backtitle "Proyecto" --title "Copia de Seguridad Aplicacion" \
        	--msgbox "Copia de seguridad $NOMBRE_BACKUP guardada en $CARPETA_BACKUP." 8 70

@@ -1,13 +1,17 @@
-#variables globales
-CARPETA='/var/www/'
-FICHERO_PHP='test.php'
-PHP_PAGE='http://localhost:8080/test.php'
+#!/bin/bash
 
-probarPHP() { #funcion 6
-#Crear el fichero “test.php” con el siguiente código: ( <?php phpinfo(); ?>)
-#Abrir test.php con un navegador web
+probarPHP() {
+    # 1. Crear el fichero “test.php” en /var/www/ con el siguiente código:
+    # ( <?php phpinfo(); ?>)
+    # 2. Abrir test.php con un navegador web. ¿Qué permisos son necesarios
+    # para que podamos verlo todo el mundo?
 
-	sudo cp $FICHERO_PHP $CARPETA 
+    # Variables
+    CARPETA='/var/www/'
+    FICHERO_PHP='test.php'
+    PHP_PAGE='http://localhost:8080/test.php'
+
+	sudo cp $FICHERO_PHP $CARPETA
 	if test $? = 0
 	then
 		echo "Probando PHP..."
@@ -16,4 +20,3 @@ probarPHP() { #funcion 6
 		echo "Ha ocurrido un error y PHP no se ha podido probar"
 	fi
 }
-#. ./probarPHP_sin_dialogo.sh

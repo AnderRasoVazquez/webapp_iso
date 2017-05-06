@@ -1,9 +1,14 @@
-# variables globales
-MYSQL='mysql.service'
+#!/bin/bash
 
-probarMysql() { # función 9
-# Testear el servicio mysql "netstat -l" y ponerlo en marcha en caso de estar
-# detenido.
+probarMysql() {
+    # Testear el servicio mysql "netstat -l" y ponerlo en marcha en caso de
+    # estar detenido.
+
+    # Variables
+    MYSQL='mysql.service'
+
+    # Testear el servicio mysql "netstat -l" y ponerlo en marcha en caso de estar
+    # detenido.
     if [ "`systemctl is-active $MYSQL`" = "active" ]
     then
         printf "$MYSQL está activo\n"

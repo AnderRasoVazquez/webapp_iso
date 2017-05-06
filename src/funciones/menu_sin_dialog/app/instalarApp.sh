@@ -1,13 +1,18 @@
 #!/bin/bash
-#VARIABLES GLOBALES
-USER='root'
-PASSWORD='euiti'
-PROFESORES='consultarprofesores.php'
-CARPETA='/var/www/'
-DIRECCION='http://localhost:8080/consultarprofesores.php'
-SALIDA='/tmp/salida.txt'
 
-instalarApp(){ #funcion 10
+instalarApp() {
+    # Ejecutar el fichero “web.sql” para crear las tablas y la base datos.
+    # Copiar el fichero “consultaprofesores.php” en /var/www/, asignar
+    # permisos y comprobar que aparece la información de los profesores en la
+    # dirección consultaprofesores.php.
+
+    # Variables
+    USER='root'
+    PASSWORD='euiti'
+    PROFESORES='consultarprofesores.php'
+    CARPETA='/var/www/'
+    DIRECCION='http://localhost:8080/consultarprofesores.php'
+    SALIDA='temp/salida.txt'
 
 	echo 'Instalando aplicacion...'
 	mysql -u $USER -p$PASSWORD < web.sql &> $SALIDA

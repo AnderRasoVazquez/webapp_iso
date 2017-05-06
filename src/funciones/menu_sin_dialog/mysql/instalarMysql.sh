@@ -1,5 +1,8 @@
-instalarMysql() { # función 7
-# Instalar el paquete Mysql de servidor y cliente.
+#!/bin/bash
+
+instalarMysql() {
+    # Instalar el paquete Mysql de servidor y cliente.
+    
     estado=`aptitude show mysql-server | grep "Estado:"`
     echo $estado | grep "no"
     if [ $? = 0 ]

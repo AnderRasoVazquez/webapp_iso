@@ -1,9 +1,14 @@
+#!/bin/bash
 
-configurarMysql() { # función 8
-# Al usuario administrador de Mysql (“root”) asignarle la contraseña “euiti”.
+configurarMysql() {
+    # Al usuario administrador de Mysql (“root”) asignarle la contraseña
+    # “euiti”.
+
+    # Variables
     TEMP_LOCAL="temp"
     PASSWORD='euiti'
     SALIDA='salida.txt'
+
     read -s -p "Introduce la contraseña actual de MySQL: " pass
     # Se intenta entrar a mysql con la contraseña dada y cambiarla a la nueva.
     # El output se redirige a $SALIDA para que sea más limpio y para poder

@@ -2,6 +2,11 @@
 
 # funcion principal
 restaurarAplicacion() {
+    # Restaurar la base de datos y los ficheros de “/var/www/” desde el
+    # fichero web.tar.gz. Aviso: para el backup y restauración de la base
+    # de datos, utilizar mysqldump.
+
+    # Variables
     CARPETA_WEB_SERVER="/var/www"
     BACKUP_A_RESTAURAR="web.tar.gz"
     SQL_BACKUP="web_backup.sql"

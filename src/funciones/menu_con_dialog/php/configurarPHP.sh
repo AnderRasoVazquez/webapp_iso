@@ -1,23 +1,12 @@
-# variables globales
-PHP_MySQL='php-mysql'
+#!/bin/bash
 
-instalado() {
-    #Comprueba a ver si PHP ya esta configurado con MySQL
-    aux=`aptitude show $PHP_MySQL | grep "State: installed"`
-    aux2=`aptitude show $PHP_MySQL | grep "Estado: instalado"`
-    aux3=$aux$aux2
-    if [ -z "$aux3" ]
-    then
-        # no configurado
-        return 0
-    else
-        # configurado
-        return 1
-    fi
-}
+configurarPHP() {
+    # Instalar el paquete de PHPX que permite trabajar con MySQL.
 
-configurarPHP() { # función 5
-# Configura PHP para ser compatible con MySQL
+    # Variables
+    PHP_MySQL='php-mysql'
+
+    # Configura PHP para ser compatible con MySQL
     dialog --backtitle "Proyecto" --title "Aplicación Web" \
     --msgbox "Esta opción hará lo siguiente:\n\n\
     Comprueba si PHP está configurado con MySQL, y si no lo está, lo configura." 10 50 #Dialog para mostrar nuestros nombres
@@ -38,4 +27,19 @@ configurarPHP() { # función 5
         dialog --msgbox "$PHP_MySQL ha sido instalado.\n" 5 40
     fi
     sleep 1
+}
+
+instalado() {
+    #Comprueba a ver si PHP ya esta configurado con MySQL
+    aux=`aptitude show $PHP_MySQL | grep "State: installed"`
+    aux2=`aptitude show $PHP_MySQL | grep "Estado: instalado"`
+    aux3=$aux$aux2
+    if [ -z "$aux3" ]
+    then
+        # no configurado
+        return 0
+    else
+        # configurado
+        return 1
+    fi
 }

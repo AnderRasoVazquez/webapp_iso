@@ -1,16 +1,26 @@
+#!/bin/bash
+
 # importar funciones necesarias
 . ./funciones/utilidades/colores.sh
 
-# variables globales
-CONF_SITE='/etc/apache2/sites-available/000-default.conf'
-CONF_SITE_BACKUP='/etc/apache2/sites-available/000-default.conf.backup'
-PORTS_FILE='/etc/apache2/ports.conf'
-PORTS_FILE_BACKUP='/etc/apache2/ports.conf.backup'
-PORT=8080
-CARPETA_RAIZ='\/var\/www'
-
 # funcion principal
 configurarApache() {
+    # 1. Asignar vuestro correo electrónico, como correo del adminastrador del
+    # servicio web, para que en caso de cualquier incidencia se le escribir un
+    # correo a esa dirección.
+    # 2. Las páginas web estarán en /var/www/. Por defecto, se encuentran en
+    # /var/www/html.
+    # 3. El servidor se encuentra por defecto escuchando las peticiones por el
+    # puerto 80, se cambiará para que escuche por el puerto 8080.
+
+    # Variables
+    CONF_SITE='/etc/apache2/sites-available/000-default.conf'
+    CONF_SITE_BACKUP='/etc/apache2/sites-available/000-default.conf.backup'
+    PORTS_FILE='/etc/apache2/ports.conf'
+    PORTS_FILE_BACKUP='/etc/apache2/ports.conf.backup'
+    PORT=8080
+    CARPETA_RAIZ='\/var\/www'
+
     crearCopiaConfiguracionApache
     cambiarPuerto
     cambiarCarpetaWebs

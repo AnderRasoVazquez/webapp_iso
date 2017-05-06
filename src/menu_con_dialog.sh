@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Importar funciones de otros ficheros
-. ./funciones/menu_con_dialog/apache/apacheInstalar.sh
+. ./funciones/menu_con_dialog/apache/instalarApache.sh
 . ./funciones/menu_con_dialog/apache/configurarApache.sh
 . ./funciones/menu_con_dialog/apache/probarApache.sh
 . ./funciones/menu_con_dialog/mysql/instalarMysql.sh
@@ -80,7 +80,7 @@ mostrarMenu() {
 
             #Seleccionar la acción que quiere realizar el usuario
             case $opcionMenuPpal in
-                1) apacheInstalar;;
+                1) instalarApache;;
                 2) configurarApache;;
                 3) probarApache;;
                 4) instalarPHP;;

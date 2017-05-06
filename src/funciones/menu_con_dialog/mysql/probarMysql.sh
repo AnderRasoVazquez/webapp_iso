@@ -1,10 +1,15 @@
-# variables globales
-MYSQL='mysql.service'
-SALIDA='/tmp/salida.txt'
+#!/bin/bash
 
-probarMysql() { # función 9
-# Testear el servicio mysql "netstat -l" y ponerlo en marcha en caso de estar
-# detenido.
+probarMysql() {
+    # Testear el servicio mysql "netstat -l" y ponerlo en marcha en caso de
+    # estar detenido.
+
+    # Variables
+    MYSQL='mysql.service'
+    SALIDA='temp/salida.txt'
+
+    # Testear el servicio mysql "netstat -l" y ponerlo en marcha en caso de estar
+    # detenido.
     if [ "`systemctl is-active $MYSQL`" = "active" ]
     then
         dialog --backtitle "Proyecto" --title "Aplicacion Web" \

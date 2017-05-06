@@ -1,15 +1,21 @@
+#!/bin/bash
+
 # importar funciones necesarias
 . ./funciones/utilidades/colores.sh
 
-configurarMysql() { # función 8
+configurarMysql() {
+    # Al usuario administrador de Mysql (“root”) asignarle la contraseña
+    # “euiti”.
+
+    # Variables
     TEMP_LOCAL="temp"
     PASSWORD='euiti'
     MYSQL='mysql.service'
     SALIDA='salida.txt'
-# Al usuario administrador de Mysql (“root”) asignarle la contraseña “euiti”.
+
+    # Al usuario administrador de Mysql (“root”) asignarle la contraseña “euiti”.
     dialog --insecure --passwordbox "Introduce la contraseña actual de MySQL:" 8 40 2> "$TEMP_LOCAL/$SALIDA"
     pass=`less "$TEMP_LOCAL/$SALIDA"`
-    rm "$TEMP_LOCAL/$SALIDA"
     # Se intenta entrar a mysql con la contraseña dada y cambiarla a la nueva.
     # El output se redirige a $SALIDA para poder comprobar si se ha entrado
     # correctamente.
@@ -22,4 +28,5 @@ configurarMysql() { # función 8
         dialog --backtitle "Proyecto" --title "Configurar Apache" \
         --msgbox "La contraseña se ha cambiado.\n" 5 70
     fi
+    rm "$TEMP_LOCAL/$SALIDA"
 }

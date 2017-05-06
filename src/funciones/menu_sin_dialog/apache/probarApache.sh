@@ -1,17 +1,25 @@
+#!/bin/bash
+
 # importar funciones necesarias
 . ./funciones/utilidades/colores.sh
 
-# variables globales
-APACHE='apache2.service'
-DEFAULT_PAGE="http://localhost:8080"
-
 # funcion principal
-probarApache() { # función 3
+probarApache() {
+    # 1. Poner en marcha el servicio web.
+    # 2. Testear si el servicio apache2 está en marchar con el comando
+    # "netstat -l" (buscar el servicio www).
+    # 3. Visualizar mediante el navegador en la dirección index.html que
+    # aparezca el mensaje: “It works”.
+
+    # Variables
+    APACHE='apache2.service'
+    DEFAULT_PAGE="http://localhost:8080"
+
     ponerEnMarchaServer
 	estaApacheEnMarcha
 }
 
-# Poner en marcha el servicio web. 
+# Poner en marcha el servicio web.
 ponerEnMarchaServer() {
     printf "Poniendo en marcha el servidor Apache...\n"
     sudo systemctl start apache2.service
@@ -20,13 +28,13 @@ ponerEnMarchaServer() {
 # testea si el servicio apache2 está en marcha
 estaApacheEnMarcha() {
 	if test "`systemctl is-active ${APACHE}`" = "active"
-	then 
+	then
 		printExito "${APACHE} está activo, abriendo navegador...\n"
         copiarPaginaDePrueba
 		visualizarPagina $DEFAULT_PAGE
 	else
 		printWarning "${APACHE} no está activo.\n"
-	fi 
+	fi
 }
 
 # visualiza mediante el navegador adecaudo la dirección proporcionada

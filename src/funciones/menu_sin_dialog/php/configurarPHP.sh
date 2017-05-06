@@ -1,13 +1,15 @@
-configurarPHP(){ #funcion5
-#Configura PHP para poder ocuparlo con MySQL
+#!/bin/bash
+
+configurarPHP() {
+    # Instalar el paquete de PHPX que permite trabajar con MySQL.
+
 	estado=`aptitude show php-mysql | grep "Estado:"`
 	echo $estado | grep "no"
 	if test $? = 0
-	then 
+	then
 	    echo "Configurando PHP con MySQL ..."
 	    sudo apt install php-mysql
 	else
 	  echo "PHP ya estaba configurado"
-	fi 
+	fi
 }
-#. ./configurarPHP_sin_dialogo.sh

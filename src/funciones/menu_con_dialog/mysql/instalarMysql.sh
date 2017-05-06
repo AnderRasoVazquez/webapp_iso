@@ -1,31 +1,17 @@
-# variables globales
-MYSQL_SERVER='mysql-server'
+#!/bin/bash
 
-instalado() {
-    #Comprueba a ver si está instalado el paquete apache2
-    aux=`aptitude show $MYSQL_SERVER | grep "State: installed"`
-    aux2=`aptitude show $MYSQL_SERVER | grep "Estado: instalado"`
-    aux3=$aux$aux2
-    if [ -z "$aux3" ]
-    then
-        # no instalado
-        return 0
-    else
-        # instalado
-        return 1
-    fi
-}
+instalarMysql() {
+    # Instalar el paquete Mysql de servidor y cliente.
 
-instalarMysql() { # función 7
-# Instalar el paquete Mysql de servidor y cliente.
+    # Variables
+    MYSQL_SERVER='mysql-server'
+
     dialog --backtitle "Proyecto" --title "Aplicación Web" \
     --msgbox "Esta opción hará lo siguiente:\n\n\
     Comprueba si el servidor $MYSQL_SERVER ya está instalado, y si no lo está, lo instala." 10 50 #Dialog para mostrar nuestros nombres
-    # Llamamos a la función
-    instalado $1 &> /dev/null
-
-    # Comprobamos el resultado... si el resultado es 1 quiere decir que ya está instalado, si es 0 entonces no está instalado
-    if [ "$?" = "1" ]
+    estado=`aptitude show $MYSQL_SERVER | grep "Estado:"`
+    echo $estado | grep "no"
+    if [ $? != 0 ]
     then
         #Si el paquete está instalado entonces se envía el mensaje
         sleep 1
