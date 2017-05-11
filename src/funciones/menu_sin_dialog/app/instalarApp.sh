@@ -22,7 +22,7 @@ instalarApp() {
 		if test $? = 0
 		then
 			echo 'Mostrando profesores...'
-            sensible-browser $DIRECCION > /dev/null 2>&1
+            sensible-browser $DIRECCION &> /dev/null &
 		else
 			echo 'ERROR: No se puede mostrar profesores'
 		fi

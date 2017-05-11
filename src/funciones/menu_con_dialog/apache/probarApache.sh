@@ -41,7 +41,7 @@ estaApacheEnMarcha() {
 
 # visualiza mediante el navegador adecaudo la dirección proporcionada
 visualizarPagina(){
-	sensible-browser $1 > /dev/null 2>&1
+    sensible-browser $1 &> /dev/null &
 	# Redirijo el output porque no quiero que salga info del navegador
 	# al abrirlo en la terminal, así se verá más limpio.
 }

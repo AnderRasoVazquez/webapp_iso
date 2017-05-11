@@ -16,7 +16,7 @@ probarApache() {
     DEFAULT_PAGE="http://localhost:8080"
 
     ponerEnMarchaServer
-	estaApacheEnMarcha
+    estaApacheEnMarcha
 }
 
 # Poner en marcha el servicio web.
@@ -27,21 +27,21 @@ ponerEnMarchaServer() {
 
 # testea si el servicio apache2 está en marcha
 estaApacheEnMarcha() {
-	if test "`systemctl is-active ${APACHE}`" = "active"
-	then
-		printExito "${APACHE} está activo, abriendo navegador...\n"
+    if test "`systemctl is-active ${APACHE}`" = "active"
+    then
+        printExito "${APACHE} está activo, abriendo navegador...\n"
         copiarPaginaDePrueba
-		visualizarPagina $DEFAULT_PAGE
-	else
-		printWarning "${APACHE} no está activo.\n"
-	fi
+        visualizarPagina $DEFAULT_PAGE
+    else
+        printWarning "${APACHE} no está activo.\n"
+    fi
 }
 
 # visualiza mediante el navegador adecaudo la dirección proporcionada
 visualizarPagina(){
-	sensible-browser $1 > /dev/null 2>&1
-	# Redirijo el output porque no quiero que salga info del navegador
-	# al abrirlo en la terminal, así se verá más limpio.
+    sensible-browser $1 &> /dev/null &
+    # Redirijo el output porque no quiero que salga info del navegador en la terminal
+    # el '&' final lo abre en el background
 }
 
 copiarPaginaDePrueba() {

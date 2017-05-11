@@ -18,7 +18,7 @@
 . ./funciones/menu_sin_dialog/app/restaurarApp.sh
 
 
-salir() { # función 13
+salir() {
 # Aperece un mensaje de despedida y los nombres de los miembros del grupo.
     read -p "¿Quieres salir del programa?(S/n) " respuesta
     if [ $respuesta != "S" ]

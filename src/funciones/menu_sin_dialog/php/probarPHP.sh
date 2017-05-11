@@ -15,7 +15,7 @@ probarPHP() {
 	if test $? = 0
 	then
 		echo "Probando PHP..."
-	    sensible-browser $PHP_PAGE > /dev/null 2>&1
+        sensible-browser $PHP_PAGE &> /dev/null &
 	else
 		echo "Ha ocurrido un error y PHP no se ha podido probar"
 	fi
