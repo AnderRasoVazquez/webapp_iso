@@ -21,8 +21,15 @@ restaurarAplicacion() {
 
     cd $CARPETA_WEB_SERVER
     sudo tar xf $BACKUP_A_RESTAURAR
-    mysql -u $USUARIO -p$password < $SQL_BACKUP 2> /dev/null
-    printf "\n"
+    mysql -u $USUARIO -p$password -D web < $SQL_BACKUP &> /dev/null
+    if [ $? != 0 ]
+    then # no se ha pemitido el aceso
+        dialog --backtitle "Proyecto" --title "Aplicación Web" \
+        --msgbox "La contraseña introducida no es correcta: se ha denegado el acceso y no se ha restaurado la base de datos." 6 70
+    else
+        dialog --backtitle "Proyecto" --title "Aplicación Web" \
+        --msgbox "La aplicación se ha restaurado completamente." 5 50
+    fi
     sudo rm $SQL_BACKUP
     cd $carpeta_actual
 }

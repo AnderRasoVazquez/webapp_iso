@@ -23,7 +23,7 @@ configurarMysql() {
     if [ -n "`cat "$TEMP_LOCAL/$SALIDA" | grep "denied"`" ]
     then # no se ha pemitido el aceso
         dialog --backtitle "Proyecto" --title "Configurar Apache" \
-        --msgbox "La contraseña introducida no es correcta: se ha denegado el aceso y no se ha cambiado la contraseña.\n" 5 70
+        --msgbox "La contraseña introducida no es correcta: se ha denegado el acceso y no se ha cambiado la contraseña.\n" 5 70
     else
         dialog --backtitle "Proyecto" --title "Configurar Apache" \
         --msgbox "La contraseña se ha cambiado.\n" 5 70

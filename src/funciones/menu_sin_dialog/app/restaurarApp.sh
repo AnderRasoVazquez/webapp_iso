@@ -17,8 +17,13 @@ restaurarAplicacion() {
     printf "Restaurando los siguientes archivos:\n"
     sudo tar -vxf $BACKUP_A_RESTAURAR
     read -s -p "Introduce la contraseña de MYSQL para root: " password
-    mysql -u $USUARIO -p$password < $SQL_BACKUP 2> /dev/null
-    printf "\n"
+    mysql -u $USUARIO -p$password -D web < $SQL_BACKUP &> /dev/null
+    if [ $? != 0 ]
+    then # no se ha pemitido el aceso
+        printWarning "\nLa contraseña introducida no es correcta: se ha denegado el acceso y no se ha restaurado la base de datos.\n"
+    else
+        printExito "\nLa aplicación se ha restaurado completamente.\n"
+    fi
     sudo rm $SQL_BACKUP
     cd $carpeta_actual
 }

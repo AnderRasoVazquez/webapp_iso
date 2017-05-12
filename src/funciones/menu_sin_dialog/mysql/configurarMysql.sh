@@ -17,7 +17,7 @@ configurarMysql() {
     mysqladmin -u root -p$pass -b password $PASSWORD &> "$TEMP_LOCAL/$SALIDA"
     if [ -n "`cat "$TEMP_LOCAL/$SALIDA" | grep "denied"`" ]
     then # no se ha pemitido el aceso
-        printWarning "La contraseña introducida no es correcta: se ha denegado el aceso y no se ha cambiado la contraseña.\n"
+        printWarning "La contraseña introducida no es correcta: se ha denegado el acceso y no se ha cambiado la contraseña.\n"
     else
         printf "La contraseña se ha cambiado.\n"
     fi
